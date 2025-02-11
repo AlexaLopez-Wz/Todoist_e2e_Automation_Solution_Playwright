@@ -1,0 +1,27 @@
+{
+  "name": "todoist_e2e_automation_solution_playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexaLopez-Wz/Todoist_e2e_Automation_Solution_Playwright.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AlexaLopez-Wz/Todoist_e2e_Automation_Solution_Playwright/issues"
+  },
+  "homepage": "https://github.com/AlexaLopez-Wz/Todoist_e2e_Automation_Solution_Playwright#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.1",
+    "prettier": "3.5.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}
