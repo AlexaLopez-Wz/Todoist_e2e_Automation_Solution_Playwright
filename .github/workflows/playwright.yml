@@ -21,7 +21,7 @@ jobs:
     - name: Run Playwright tests
       env:
         EMAIL: ${{secrets.EMAIL}}
-        PASSWORD: ${{secrets.USERNAME}}
+        PASSWORD: ${{secrets.PASSWORD}}
       run: EMAIL='${EMAIL}' PASSWORD='${PASSWORD}' npx playwright test
     - uses: actions/upload-artifact@v4
       if: always()
