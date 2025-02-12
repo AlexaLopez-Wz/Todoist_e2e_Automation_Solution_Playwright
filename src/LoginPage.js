@@ -7,6 +7,7 @@ class LoginPage {
     this.emailInput = page.locator("#element-0");
     this.passwordInput = page.locator("#element-2");
     this.loginSubmitButton = page.getByRole("button", { name: "Log in" });
+    this.errorMessageText = page.getByText("Wrong email or password.");
   }
 
   /**
