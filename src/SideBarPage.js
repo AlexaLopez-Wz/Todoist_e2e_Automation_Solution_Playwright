@@ -4,7 +4,8 @@
  */
 class SideBarPage {
   constructor(page) {
-    this.usernameLabel = page.getByText("Tester");
+    this.profileSettingsButton = page.getByRole("button", { name: "Settings" });
+    this.inboxButton = page.getByRole("listitem").filter({ hasText: "Inbox" });
   }
 }
 export default SideBarPage;
