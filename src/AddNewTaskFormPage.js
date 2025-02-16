@@ -9,10 +9,10 @@ class AddNewTaskFormPage {
   constructor(page) {
     this.taskNameInput = page.locator("//*[@data-placeholder='Task name']");
     this.taskDescriptionInput = page.locator(
-      "//*[@data-placeholder='Description']"
+      "//*[@data-placeholder='Description']",
     );
     this.addNewTaskFormButton = page.locator(
-      "//*[@data-testid='task-editor-submit-button']"
+      "//*[@data-testid='task-editor-submit-button']",
     );
   }
 

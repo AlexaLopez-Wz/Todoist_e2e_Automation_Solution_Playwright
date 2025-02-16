@@ -7,7 +7,7 @@ class InboxPage {
     this.addTask = page.locator(".plus_add_button");
     this.taskNameLabel = page.locator(".task_content");
     this.markAsCompleteCheckbox = page.locator(
-      "//*[@aria-label='Mark task as complete']"
+      "//*[@aria-label='Mark task as complete']",
     );
   }
 
