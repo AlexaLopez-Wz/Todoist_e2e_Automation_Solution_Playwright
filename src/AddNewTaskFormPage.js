@@ -4,15 +4,16 @@
  */
 
 import { test, expect } from "@playwright/test";
+var casual = require("casual");
 
 class AddNewTaskFormPage {
   constructor(page) {
     this.taskNameInput = page.locator("//*[@data-placeholder='Task name']");
     this.taskDescriptionInput = page.locator(
-      "//*[@data-placeholder='Description']",
+      "//*[@data-placeholder='Description']"
     );
     this.addNewTaskFormButton = page.locator(
-      "//*[@data-testid='task-editor-submit-button']",
+      "//*[@data-testid='task-editor-submit-button']"
     );
   }
 
@@ -26,6 +27,19 @@ class AddNewTaskFormPage {
     await this.taskDescriptionInput.click();
     await this.taskDescriptionInput.fill(taskDescription);
     await this.addNewTaskFormButton.click();
+  }
+
+  /**
+   *  Creates # new task/tasks
+   * @param {int} taskNumber
+   */
+  async addNewTask(taskNumber) {
+    let taskName = [];
+    for (let i = 0; i < taskNumber; i++) {
+      taskName.push(casual.title);
+      await this.fillNewTaskForm(taskName[i], casual.description);
+    }
+    return taskName;
   }
 }
 export default AddNewTaskFormPage;

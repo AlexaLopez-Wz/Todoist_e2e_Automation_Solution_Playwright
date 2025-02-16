@@ -27,7 +27,19 @@ test("As an user, I should be able to create a new task", async ({ page }) => {
   expect(await inboxPage.taskNameLabel.textContent()).toEqual(taskName);
 });
 
-test.afterEach(async ({ page }) => {
+test("As an user, I should be able to create 10 new tasks", async ({
+  page,
+}) => {
   const inboxPage = new InboxPage(page);
-  await inboxPage.markTaskAsComplete();
+  await inboxPage.clickOnAddNewTask();
+  const addNewTaskFormPage = new AddNewTaskFormPage(page);
+  const taskAddedNames = await addNewTaskFormPage.addNewTask(3);
+  const taskNames = inboxPage.getTaskName();
+  console.log(await taskAddedNames);
+  console.log(taskNames);
 });
+
+// test.afterEach(async ({ page }) => {
+//   const inboxPage = new InboxPage(page);
+//   await inboxPage.markTaskAsComplete();
+// });
