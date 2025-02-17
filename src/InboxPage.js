@@ -9,6 +9,7 @@ class InboxPage {
     this.markAsCompleteCheckbox = page.locator(
       "//*[@aria-label='Mark task as complete']"
     );
+    this.page = page;
   }
 
   /**
@@ -22,20 +23,22 @@ class InboxPage {
    *  Clicks on the task checkbox to complete it
    */
   async markTaskAsComplete() {
-    await this.markAsCompleteCheckbox.click();
+    let tasksNumber = (await this.markAsCompleteCheckbox.count()) - 1;
+    await this.page.waitForTimeout(2000);
+    for (let i = 0; i <= tasksNumber; i++) {
+      await this.markAsCompleteCheckbox.nth(0).click();
+      await this.page.waitForTimeout(900);
+    }
   }
 
   /**
-   *  Creates an array with the task name
+   *  Creates an array with the task names
    */
   async getTaskName() {
     let taskNames = [];
-    for (let i = 0; i < this.taskNameLabel.count(); i++) {
+    for (let i = 0; i < (await this.taskNameLabel.count()); i++) {
       taskNames.push(await this.taskNameLabel.nth(i).innerText());
-      console.log(await this.taskNameLabel.nth(i).innerText());
-      console.log(taskNames);
     }
-    console.log(taskNames);
     return taskNames;
   }
 }

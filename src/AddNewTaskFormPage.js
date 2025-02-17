@@ -15,6 +15,7 @@ class AddNewTaskFormPage {
     this.addNewTaskFormButton = page.locator(
       "//*[@data-testid='task-editor-submit-button']"
     );
+    this.page = page;
   }
 
   /**
@@ -32,14 +33,16 @@ class AddNewTaskFormPage {
   /**
    *  Creates # new task/tasks
    * @param {int} taskNumber
+   * @return {array}
    */
   async addNewTask(taskNumber) {
-    let taskName = [];
+    let taskNameList = [];
     for (let i = 0; i < taskNumber; i++) {
-      taskName.push(casual.title);
-      await this.fillNewTaskForm(taskName[i], casual.description);
+      taskNameList.push(casual.title);
+      await this.fillNewTaskForm(taskNameList[i], casual.description);
+      await this.page.waitForTimeout(800);
     }
-    return taskName;
+    return taskNameList;
   }
 }
 export default AddNewTaskFormPage;
