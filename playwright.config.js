@@ -34,6 +34,7 @@ export default defineConfig({
       },
     ],
     ["dot"], // other reporters
+    ["allure-playwright"],
   ],
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */

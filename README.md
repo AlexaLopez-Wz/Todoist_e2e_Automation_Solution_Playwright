@@ -55,6 +55,10 @@ Programming language:
   ```
   npm install eslint
   ```
+- Install Allure report using the terminal
+  ```
+  npm npm i allure-playwright
+  ```
 - Install Dotenv using the terminal
   ```
   npm install dotenv --save
@@ -109,4 +113,12 @@ Copy & paste the following code into the terminal
 - Run all the test cases
   ```
   npx playwright test
+  ```
+- Generate Allure report
+  ```
+  npx allure generate ./allure-results -o ./allure-report
+  ```
+- Open Allure report
+  ```
+  npx allure open ./allure-report
   ```
