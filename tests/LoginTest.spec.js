@@ -1,4 +1,3 @@
-// @ts-check
 import { test, expect } from "@playwright/test";
 import LoginPage from "../src/LoginPage";
 import SideBarPage from "../src/SideBarPage";
