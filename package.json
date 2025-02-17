@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "casual": "^1.6.2",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "playwright-slack-report": "^1.1.89"
   }
 }
