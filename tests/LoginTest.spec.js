@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
-import LoginPage from "../src/LoginPage";
-import SideBarPage from "../src/SideBarPage";
+import LoginPage from "../src/pages/LoginPage";
+import SideBarPage from "../src/pages/SideBarPage";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("https://app.todoist.com/auth/login/");

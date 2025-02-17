@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
-import LoginPage from "../src/LoginPage";
-import SideBarPage from "../src/SideBarPage";
-import InboxPage from "../src/InboxPage";
-import AddNewTaskFormPage from "../src/AddNewTaskFormPage";
+import LoginPage from "../src/pages/LoginPage";
+import SideBarPage from "../src/pages/SideBarPage";
+import InboxPage from "../src/pages/InboxPage";
+import AddNewTaskFormPage from "../src/pages/AddNewTaskFormPage";
 import Utils from "../src/helpers/Utils";
 var casual = require("casual");
 
