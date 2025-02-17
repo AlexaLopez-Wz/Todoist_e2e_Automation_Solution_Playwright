@@ -22,7 +22,7 @@ jobs:
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: EMAIL=${EMAIL} PASSWORD=${PASSWORD} SLACK_WEBHOOK_URL=${secrets.SLACK_WEBHOOK_URL} npx playwright test
+        run: EMAIL=${EMAIL} PASSWORD=${PASSWORD} SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL} npx playwright test
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
