@@ -20,6 +20,7 @@ Frameworks and libraries used:
 - ESLint
 - Casual @1.6.2
 - Dotenv @16.4.7
+- playwright-slack-report @1.1.89
 
 Programming language:
 
@@ -45,6 +46,10 @@ Programming language:
 - Install Casual using the terminal
   ```
   npm install casual
+  ```
+- Install playwright-slack-report using the terminal
+  ```
+  npm i playwright-slack-report
   ```
 - Install ESLint using the terminal
   ```
