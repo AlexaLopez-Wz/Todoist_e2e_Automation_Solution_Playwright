@@ -1,13 +1,15 @@
-name: Playwright Tests
+name: Playwright Tests 2
 on:
   push:
     branches: [main, master, dev]
-
+#environment: PROD
+env:
+     EMAIL: ${{ secrets.EMAIL }}
+     PASSWORD: ${{ secrets.PASSWORD }}
+     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 jobs:
   test:
-    timeout-minutes: 60
     runs-on: ubuntu-latest
-    environment: PROD
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -18,10 +20,6 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        env:
-          EMAIL: ${{ secrets.EMAIL }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: EMAIL=${EMAIL} PASSWORD=${PASSWORD} SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL} npx playwright test
   success_Notification:
     name: Slack Success Notification
@@ -36,7 +34,7 @@ jobs:
       SLACK_TITLE: Test Success
       SLACK_USERNAME: testBot
       SLACK_COLOR: '#00ff00'
-      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}  
+      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}  
   falure_Notification:
     name: Slack Failure Notification
     runs-on: ubuntu-latest
@@ -50,5 +48,5 @@ jobs:
       SLACK_TITLE: Test Failure
       SLACK_USERNAME: testBot
       SLACK_COLOR: '#ff0000'
-      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
       
