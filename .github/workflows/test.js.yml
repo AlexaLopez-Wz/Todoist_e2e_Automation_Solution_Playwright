@@ -1,0 +1,54 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [main, master, dev]
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    environment: PROD
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        env:
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: EMAIL=${EMAIL} PASSWORD=${PASSWORD} SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL} npx playwright test
+  success_Notification:
+    name: Slack Success Notification
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+    - uses: actions/checkout@v2
+    - name: Slack Success Notification
+      uses: rtCamp/action-slack-notify@v2
+    env:
+      SLACK_MESSAGE: 'All the todoist test cases passed successfully'
+      SLACK_TITLE: Test Success
+      SLACK_USERNAME: testBot
+      SLACK_COLOR: '#00ff00'
+      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}  
+  falure_Notification:
+    name: Slack Failure Notification
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+    - uses: actions/checkout@v2
+    - name: Slack Failure Notification
+      uses: rtCamp/action-slack-notify@v2
+    env:
+      SLACK_MESSAGE: 'Some test cases failed, please check the console logs'
+      SLACK_TITLE: Test Failure
+      SLACK_USERNAME: testBot
+      SLACK_COLOR: '#ff0000'
+      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      
